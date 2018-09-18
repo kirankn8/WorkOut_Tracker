@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var workoutCategorySchema = new mongoose.Schema({
+var workoutCategorySchema = new Schema({
     category_name: String
 });
 

@@ -4,9 +4,30 @@ var httpStatusObj = function (msg) {
     }
 }
 
-var httpStatusCode = function (status_code) {
+var httpMethods = {
+    'GET': 0,
+    'POST': 1,
+    'PUT': 2,
+    'PATCH': 3,
+    'DELETE': 4,
+}
+
+var httpStatusCode = function (status_code, method) {
     switch (status_code) {
-        case 200: return httpStatusObj("OK")
+        case 200:
+            switch (httpMethods[method]) {
+                case 0: return httpStatusObj("OK");
+                    break;
+                case 1: return httpStatusObj("Object recieved successfully");
+                    break;
+                case 2: return httpStatusObj("Object updated successfully");
+                    break;
+                case 3: return httpStatusObj("Object patched successfully");
+                    break;
+                case 4: return httpStatusObj("Object deleted successfully");
+                    break;
+                default: return httpStatusObj("OK")
+            }
             break;
         case 201: return httpStatusObj("Created")
             break;

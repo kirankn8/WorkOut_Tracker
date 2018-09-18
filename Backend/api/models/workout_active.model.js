@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var workoutActiveSchema = new mongoose.Schema({
+var workoutActiveSchema = new Schema({
     workout_id: [{ type: Schema.Types.ObjectId, ref: 'workout_collection', required: true }],
     start_time: String,
     start_date: { type: Date, default: Date.now },
