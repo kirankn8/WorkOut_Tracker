@@ -20,7 +20,7 @@ db.once('open', function () {
 
 //  Middlewares
 app.use(session({ secret: "cats" }));
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
 app.use(passport.initialize());
