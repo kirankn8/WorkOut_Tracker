@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose');
 const config = require('./config');
+const session = require("express-session");
+const passport = require('passport')
 
 const app = express();
 
@@ -17,9 +19,12 @@ db.once('open', function () {
 });
 
 //  Middlewares
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({ secret: "cats" }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 app.use(cors())
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use('/', routes);

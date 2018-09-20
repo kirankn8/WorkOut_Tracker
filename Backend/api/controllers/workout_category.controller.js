@@ -1,6 +1,13 @@
 var workoutCategoryModel = require('../models/workout_category.model');
 const httpStatusCode = require('../httpCodes');
 
+exports.find_AllworkoutCategory = function (req, res) {
+    workoutCategoryModel.find({}, function (err, docs) {
+        if (err) res.status(404).json(httpStatusCode(404));
+        res.json(docs);
+    })
+}
+
 exports.new_workoutCategory = function (req, res) {
     var workoutCat = new workoutCategoryModel(req.body);
 
